@@ -1,0 +1,708 @@
+index.html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Morgan’s Fleet Care | Mobile HGV & Trailer Maintenance | South Wales</title>
+
+  <meta name="description" content="Mobile HGV & trailer maintenance, diagnostics and roadside repairs across South Wales. Fast response, fleet support, breakdown assistance. Call 07896467127." />
+  <meta name="theme-color" content="#0b0f14" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Morgan’s Fleet Care | Keeping the Fleet Moving" />
+  <meta property="og:description" content="Mobile HGV & trailer repairs, diagnostics and fleet support across South Wales. Call 07896467127." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#070a0f;
+      --panel:#0e141d;
+      --panel2:#0a0f16;
+      --text:#e7edf5;
+      --muted:#b7c3d2;
+      --steel:#1b2633;
+      --line:rgba(255,255,255,.08);
+      --glow:rgba(0,191,255,.35);
+      --blue:#00bfff;
+      --amber:#ffb020;
+      --red:#ff3b3b;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:26px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(0,191,255,.12), transparent 60%),
+        radial-gradient(700px 450px at 80% 30%, rgba(255,176,32,.10), transparent 60%),
+        radial-gradient(900px 600px at 50% 120%, rgba(255,59,59,.08), transparent 55%),
+        linear-gradient(180deg, #060910 0%, #070a0f 60%, #05070c 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .chip{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border:1px solid var(--line);
+      border-radius:999px; background:rgba(14,20,29,.55);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot.blue{background:var(--blue); box-shadow:0 0 0 6px rgba(0,191,255,.14)}
+    .dot.amber{background:var(--amber); box-shadow:0 0 0 6px rgba(255,176,32,.14)}
+    .dot.red{background:var(--red); box-shadow:0 0 0 6px rgba(255,59,59,.14)}
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(7,10,15,.72);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:0;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(0,191,255,.8), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(255,176,32,.55), transparent 55%),
+        linear-gradient(135deg, #0d1724, #04070c);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 6px rgba(0,191,255,.08);
+      flex:0 0 auto;
+    }
+    .brandtext{min-width:0}
+    .brandtext b{display:block; font-size:14px; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brandtext span{display:block; font-size:12px; color:var(--muted)}
+    .nav{
+      display:flex; gap:14px; align-items:center;
+    }
+    .nav a{
+      text-decoration:none; color:var(--muted);
+      font-size:13px; padding:8px 10px; border-radius:12px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
+    .ctaRow{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px; border-radius:14px; text-decoration:none;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      color:var(--text);
+      font-weight:700;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      font-size:13px;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{
+      border-color: rgba(0,191,255,.45);
+      background:linear-gradient(180deg, rgba(0,191,255,.22), rgba(0,191,255,.06));
+      box-shadow: 0 16px 50px rgba(0,191,255,.12), 0 16px 40px rgba(0,0,0,.35);
+    }
+    .btn.warn{
+      border-color: rgba(255,176,32,.45);
+      background:linear-gradient(180deg, rgba(255,176,32,.22), rgba(255,176,32,.06));
+    }
+
+    /* Hero */
+    .hero{
+      padding:46px 0 22px;
+      position:relative;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .heroCard{
+      border-radius:var(--radius2);
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(14,20,29,.75), rgba(10,15,22,.65)),
+        radial-gradient(1200px 600px at 10% 0%, rgba(0,191,255,.16), transparent 60%),
+        radial-gradient(900px 500px at 100% 40%, rgba(255,176,32,.12), transparent 60%);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding:28px 22px;
+    }
+    .hazard{
+      position:absolute; inset:-40px -40px auto auto;
+      width:220px; height:220px; transform:rotate(18deg);
+      background:
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,176,32,.18) 0px,
+          rgba(255,176,32,.18) 12px,
+          rgba(0,0,0,0) 12px,
+          rgba(0,0,0,0) 24px
+        );
+      border:1px solid rgba(255,255,255,.08);
+      filter: blur(.2px);
+      opacity:.8;
+    }
+    .steelGrain{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.02), transparent 30%, rgba(255,255,255,.02)),
+        radial-gradient(800px 300px at 50% 0%, rgba(255,255,255,.05), transparent 60%);
+      opacity:.6;
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+    .hero h1{
+      margin:12px 0 10px;
+      font-size:44px;
+      line-height:1.02;
+      letter-spacing:-.6px;
+    }
+    .hero h1 .blue{color:var(--blue); text-shadow:0 0 40px var(--glow)}
+    .lead{color:var(--muted); font-size:16px; line-height:1.55; margin:0 0 18px}
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .heroBadges{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.22);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .badge b{color:var(--text)}
+    .icon{
+      width:18px;height:18px; display:inline-block;
+      border-radius:6px;
+      background:linear-gradient(180deg, rgba(0,191,255,.35), rgba(0,191,255,.08));
+      border:1px solid rgba(0,191,255,.28);
+      box-shadow:0 10px 25px rgba(0,191,255,.12);
+      flex:0 0 auto;
+    }
+    .icon.amber{
+      background:linear-gradient(180deg, rgba(255,176,32,.35), rgba(255,176,32,.08));
+      border-color:rgba(255,176,32,.28);
+      box-shadow:0 10px 25px rgba(255,176,32,.10);
+    }
+    .icon.red{
+      background:linear-gradient(180deg, rgba(255,59,59,.30), rgba(255,59,59,.08));
+      border-color:rgba(255,59,59,.24);
+      box-shadow:0 10px 25px rgba(255,59,59,.10);
+    }
+
+    .sideStack{display:grid; gap:14px}
+    .alertCard{
+      border-radius:var(--radius2);
+      border:1px solid rgba(255,59,59,.22);
+      background:
+        linear-gradient(180deg, rgba(255,59,59,.14), rgba(10,15,22,.65));
+      box-shadow: var(--shadow);
+      padding:18px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .alertCard:before{
+      content:"";
+      position:absolute; inset:-60px -60px auto auto;
+      width:220px; height:220px; transform:rotate(28deg);
+      background:
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,59,59,.20) 0px,
+          rgba(255,59,59,.20) 10px,
+          rgba(0,0,0,0) 10px,
+          rgba(0,0,0,0) 20px
+        );
+      opacity:.65;
+    }
+    .alertCard h3{margin:0 0 6px; font-size:16px}
+    .alertCard p{margin:0 0 12px; color:var(--muted); font-size:13.5px; line-height:1.5}
+    .quickCard{
+      border-radius:var(--radius2);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(14,20,29,.72), rgba(10,15,22,.65));
+      box-shadow: var(--shadow);
+      padding:18px 18px;
+    }
+    .quickGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .quickItem{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 12px;
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .quickItem b{color:var(--text)}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* Sections */
+    .section{padding:28px 0}
+    .section h2{
+      margin:0 0 14px;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .sub{color:var(--muted); margin:0 0 18px; line-height:1.55}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius:var(--radius2);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(14,20,29,.72), rgba(10,15,22,.62));
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:after{
+      content:"";
+      position:absolute; inset:auto -60px -60px auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 30% 30%, rgba(0,191,255,.18), transparent 55%);
+      opacity:.75;
+      transform:rotate(10deg);
+      pointer-events:none;
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card ul{margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.6; font-size:13.5px}
+    .pillRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      color:var(--muted);
+    }
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
+      margin:18px 0;
+    }
+
+    /* Reviews + Gallery */
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .quote{
+      margin:0;
+      font-size:13.5px;
+      line-height:1.65;
+      color:var(--muted);
+    }
+    .quote b{color:var(--text)}
+    .stars{letter-spacing:2px; color:var(--amber); font-size:14px; margin-bottom:10px}
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+    .ph{
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(255,255,255,.02);
+      height:92px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(183,195,210,.7);
+      font-size:12px;
+      text-align:center;
+      padding:10px;
+    }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .contactCard{
+      border-radius:var(--radius2);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(14,20,29,.72), rgba(10,15,22,.62));
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .contactCard a{color:var(--text); text-decoration:none}
+    .contactCard a:hover{text-decoration:underline}
+    .kpiRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 12px;
+      background:rgba(255,255,255,.02);
+      min-width:160px;
+    }
+    .kpi b{display:block; font-size:14px}
+    .kpi span{display:block; color:var(--muted); font-size:12px; margin-top:4px}
+
+    /* Floating WhatsApp button */
+    .floatWA{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:60;
+      border-radius:999px;
+      border:1px solid rgba(0,191,255,.35);
+      background:linear-gradient(180deg, rgba(0,191,255,.22), rgba(0,191,255,.06));
+      padding:12px 14px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:800;
+      box-shadow: 0 20px 70px rgba(0,0,0,.55), 0 0 0 8px rgba(0,191,255,.08);
+    }
+    .floatWA small{display:block; color:var(--muted); font-weight:600; font-size:11px; margin-top:2px}
+    .waIcon{
+      width:38px;height:38px;border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(0,191,255,.8), transparent 55%),
+        linear-gradient(135deg, #0e1724, #05070c);
+      border:1px solid rgba(255,255,255,.12);
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px;
+    }
+
+    footer{
+      padding:26px 0 90px;
+      border-top:1px solid var(--line);
+      color:rgba(183,195,210,.8);
+      font-size:12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr; }
+      .grid3{grid-template-columns:1fr}
+      .twoCol{grid-template-columns:1fr}
+      .contactGrid{grid-template-columns:1fr}
+      .gallery{grid-template-columns: repeat(2, 1fr)}
+      .nav{display:none}
+      .hero h1{font-size:38px}
+    }
+    @media (max-width: 460px){
+      .hero h1{font-size:34px}
+      .gallery{grid-template-columns:1fr}
+      .quickGrid{grid-template-columns:1fr}
+    }
+  </style>
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Morgan’s Fleet Care",
+    "telephone":"+44 7896 467127",
+    "email":"Morganfleetcare@gmail.com",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Caerphilly",
+      "addressRegion":"South Wales",
+      "addressCountry":"GB"
+    },
+    "areaServed":"South Wales",
+    "description":"Mobile HGV and trailer maintenance, diagnostics, roadside repairs and fleet support."
+  }
+  </script>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <div class="brand">
+          <!-- OPTIONAL: replace .logo with <img src="logo.png" ...> once you add your logo file -->
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <b>Morgan’s Fleet Care</b>
+            <span>Mobile HGV & Trailer Maintenance • South Wales</span>
+          </div>
+        </div>
+
+        <div class="nav" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#why">Why us</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn warn" href="tel:07896467127">📞 Call</a>
+          <a class="btn primary" href="https://wa.me/447896467127?text=Hi%20Morgan%E2%80%99s%20Fleet%20Care%2C%20I%20need%20help%20with%20a%20vehicle.%20Location%3A%20____%20Vehicle%3A%20____%20Issue%3A%20____" target="_blank" rel="noopener">💬 WhatsApp Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div class="heroCard">
+            <div class="hazard" aria-hidden="true"></div>
+            <div class="steelGrain" aria-hidden="true"></div>
+
+            <span class="chip"><span class="dot amber"></span><b style="color:var(--text)">Fast response</b> • breakdown & repairs</span>
+
+            <h1>Keeping the <span class="blue">Fleet Moving</span>.</h1>
+            <p class="lead">
+              Mobile maintenance and repairs for <b>HGVs, trailers and fleet vehicles</b>.
+              Diagnostics, electrical faults, braking systems, DPF issues and roadside call-outs — built for real-world uptime.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary" href="tel:07896467127">📞 07896 467127 — Call Now</a>
+              <a class="btn" href="#services">🛠️ View Services</a>
+              <a class="btn" href="mailto:Morganfleetcare@gmail.com">✉️ Email</a>
+            </div>
+
+            <div class="heroBadges">
+              <div class="badge"><span class="icon"></span><div><b>Diagnostics</b><br><span class="small">Fault finding & warnings</span></div></div>
+              <div class="badge"><span class="icon amber"></span><div><b>Trailer Systems</b><br><span class="small">EBS / brakes / lights</span></div></div>
+              <div class="badge"><span class="icon red"></span><div><b>Breakdown Support</b><br><span class="small">On-site repairs</span></div></div>
+            </div>
+          </div>
+
+          <div class="sideStack">
+            <div class="alertCard">
+              <h3>⚠️ Broken down?</h3>
+              <p>Send your location + vehicle details and we’ll get you moving again as fast as possible.</p>
+              <div class="heroActions">
+                <a class="btn warn" href="tel:07896467127">Call Emergency</a>
+                <a class="btn" href="https://wa.me/447896467127?text=Hi%20Morgan%E2%80%99s%20Fleet%20Care%2C%20Breakdown%20help%20needed.%20Location%3A%20____%20Vehicle%3A%20____%20Issue%3A%20____" target="_blank" rel="noopener">WhatsApp Location</a>
+              </div>
+            </div>
+
+            <div class="quickCard">
+              <h3 style="margin:0 0 8px">Workshop-grade support — on the road</h3>
+              <p class="sub" style="margin:0">Based in <b style="color:var(--text)">Caerphilly</b>, covering <b style="color:var(--text)">South Wales</b>.</p>
+              <div class="quickGrid">
+                <div class="quickItem"><b>Phone</b><br>07896 467127</div>
+                <div class="quickItem"><b>Email</b><br>Morganfleetcare@gmail.com</div>
+                <div class="quickItem"><b>Service</b><br>Mobile & on-site</div>
+                <div class="quickItem"><b>Focus</b><br>Uptime & compliance</div>
+              </div>
+              <div class="divider"></div>
+              <span class="chip"><span class="dot blue"></span>Quotes via WhatsApp • photos & fault codes welcome</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="wrap">
+        <h2>Services</h2>
+        <p class="sub">Aggressive, practical repairs and maintenance to keep your wagons legal, safe and earning.</p>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>HGV Repairs & Maintenance</h3>
+            <ul>
+              <li>Roadside repairs & call-outs</li>
+              <li>Fault diagnosis & rectification</li>
+              <li>Air leaks, suspension and running issues</li>
+              <li>Preventative maintenance support</li>
+            </ul>
+            <div class="pillRow">
+              <span class="pill">Mobile repair</span><span class="pill">Breakdown</span><span class="pill">Uptime</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Trailer Systems</h3>
+            <ul>
+              <li>EBS / brake system fault finding</li>
+              <li>Lights, wiring and connectors</li>
+              <li>ABS sensors & braking issues</li>
+              <li>Inspection support & compliance prep</li>
+            </ul>
+            <div class="pillRow">
+              <span class="pill">EBS</span><span class="pill">Brakes</span><span class="pill">Electrics</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Diagnostics & Electrical</h3>
+            <ul>
+              <li>Warning lights & fault codes</li>
+              <li>Battery/charging issues</li>
+              <li>Engine performance problems</li>
+              <li>DPF-related troubleshooting</li>
+            </ul>
+            <div class="pillRow">
+              <span class="pill">Fault codes</span><span class="pill">DPF</span><span class="pill">Battery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section">
+      <div class="wrap">
+        <h2>Why Morgan’s Fleet Care</h2>
+        <p class="sub">No fluff — just solid diagnosis, clean fixes, and fast turnarounds.</p>
+
+        <div class="twoCol">
+          <div class="card">
+            <h3>What you get</h3>
+            <ul>
+              <li><b style="color:var(--text)">Fast response</b> in South Wales when your wagon’s down</li>
+              <li><b style="color:var(--text)">Straight answers</b> — what’s failed, why, and what it takes to fix</li>
+              <li><b style="color:var(--text)">Fleet mindset</b> — downtime is money</li>
+              <li><b style="color:var(--text)">Photos + codes accepted</b> via WhatsApp to speed diagnosis</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Typical call-outs</h3>
+            <ul>
+              <li>Warning lights / derates</li>
+              <li>Trailer EBS faults</li>
+              <li>Lighting & connector issues</li>
+              <li>Charging faults / batteries</li>
+              <li>Air leaks & brake issues</li>
+              <li>Intermittent electrical gremlins</li>
+            </ul>
+            <div class="divider"></div>
+            <span class="chip"><span class="dot amber"></span>Send: location • reg • unit/trailer • fault codes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section">
+      <div class="wrap">
+        <h2>Reviews</h2>
+        <p class="sub">Drop your real customer reviews in here (I’ll format them perfectly). For now, placeholders:</p>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="stars">★★★★★</div>
+            <p class="quote"><b>“Rapid response and got us rolling again.”</b><br>— Fleet Manager, South Wales</p>
+          </div>
+          <div class="card">
+            <div class="stars">★★★★★</div>
+            <p class="quote"><b>“Spot-on diagnostics, no messing about.”</b><br>— Owner Driver</p>
+          </div>
+          <div class="card">
+            <div class="stars">★★★★★</div>
+            <p class="quote"><b>“Trailer brake fault sorted on-site.”</b><br>— Transport Operator</p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 style="margin-top:0">Work Gallery</h2>
+        <p class="sub">Add a few photos of jobs/repairs. Replace these placeholders with images later.</p>
+        <div class="gallery">
+          <div class="ph">Photo 1<br>HGV repair</div>
+          <div class="ph">Photo 2<br>Trailer brakes</div>
+          <div class="ph">Photo 3<br>Diagnostics</div>
+          <div class="ph">Photo 4<br>Roadside call-out</div>
+          <div class="ph">Photo 5<br>Electrical fix</div>
+          <div class="ph">Photo 6<br>Fleet support</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p class="sub">Call, message or email. If you WhatsApp, include location + vehicle + issue to speed things up.</p>
+
+        <div class="contactGrid">
+          <div class="contactCard">
+            <h3 style="margin:0 0 10px">Direct</h3>
+            <p style="margin:0; color:var(--muted); line-height:1.8">
+              <b style="color:var(--text)">Phone:</b> <a href="tel:07896467127">07896 467127</a><br>
+              <b style="color:var(--text)">Email:</b> <a href="mailto:Morganfleetcare@gmail.com">Morganfleetcare@gmail.com</a><br>
+              <b style="color:var(--text)">Area:</b> Caerphilly, South Wales
+            </p>
+
+            <div class="heroActions" style="margin-top:14px">
+              <a class="btn warn" href="tel:07896467127">📞 Call Now</a>
+              <a class="btn primary" href="https://wa.me/447896467127?text=Hi%20Morgan%E2%80%99s%20Fleet%20Care%2C%20can%20I%20get%20a%20quote%3F%20Location%3A%20____%20Vehicle%3A%20____%20Issue%3A%20____" target="_blank" rel="noopener">💬 WhatsApp Quote</a>
+            </div>
+
+            <div class="kpiRow">
+              <div class="kpi"><b>Mobile service</b><span>On-site support</span></div>
+              <div class="kpi"><b>Fleet focused</b><span>Reduce downtime</span></div>
+              <div class="kpi"><b>Diagnostics</b><span>Fast fault finding</span></div>
+            </div>
+          </div>
+
+          <div class="contactCard">
+            <h3 style="margin:0 0 10px">Quick quote checklist</h3>
+            <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.75">
+              <li>Your location (postcode or pin)</li>
+              <li>Vehicle / trailer details</li>
+              <li>Fault codes / warning lights</li>
+              <li>Photos / short video if possible</li>
+              <li>What happened (symptoms)</li>
+            </ul>
+
+            <div class="divider"></div>
+            <span class="chip"><span class="dot blue"></span>WhatsApp is fastest for quotes & fault codes</span>
+
+            <div class="divider"></div>
+            <p class="sub" style="margin:0">
+              Want a multi-page version later (Services, Fleet Contracts, Gallery, Reviews)?  
+              This layout upgrades easily.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center">
+        <div>© 2026 <b style="color:var(--text)">Morgan’s Fleet Care</b> • Caerphilly, South Wales</div>
+        <div style="opacity:.85">Keeping the Fleet Moving</div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floatWA" href="https://wa.me/447896467127?text=Hi%20Morgan%E2%80%99s%20Fleet%20Care%2C%20I%20need%20help.%20Location%3A%20____%20Vehicle%3A%20____%20Issue%3A%20____" target="_blank" rel="noopener" aria-label="WhatsApp Morgan’s Fleet Care">
+    <span class="waIcon">💬</span>
+    <span>
+      WhatsApp<br><small>Send location + details</small>
+    </span>
+  </a>
+
+</body>
+</html>
